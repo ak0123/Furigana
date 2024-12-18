@@ -1,6 +1,6 @@
 import Kuroshiro from "kuroshiro";
 import KuromojiAnalyzer from "kuroshiro-analyzer-kuromoji";
-import browser from "webextension-polyfill";
+/*import browser from "webextension-polyfill";
 
 const initListeners = [];
 
@@ -45,8 +45,10 @@ async function waitInitMessageListener(message) {
       });
     });
   }
+
 }
+  */
 
-browser.runtime.onMessage.addListener(waitInitMessageListener);
+//browser.runtime.onMessage.addListener(waitInitMessageListener);
 
-init();
+//init();

@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "__MSG_extensionName__",
   "version": "1.0.3",
   "description": "Add furigana",
@@ -7,40 +7,51 @@
     "38": "icons/icon.png"
   },
   "web_accessible_resources": [
-    "dict/*.dat"
+    {
+      "resources": [
+        "dict/*.dat"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
   ],
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": [
+        "*://*/*"
+      ],
       "js": [
         "dist/content.js"
       ]
     }
   ],
   "default_locale": "en",
-  "browser_action": {
+  "permissions": [
+    "storage",
+    "contextMenus"
+  ],
+  "host_permissions":[
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "dist/background.js"
+  },
+  "options_ui": {
+    "page": "setting/options.html",
+    "browser_style": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cneyhn@gmail.com"
+    }
+  },
+  "action": {
     "default_icon": {
       "38": "icons/icon.png"
     },
     "default_title": "furigana",
     "default_popup": "setting/options.html"
   },
-  "permissions": [
-    "<all_urls>", "storage", "contextMenus"
-  ],
-  "background": {
-    "scripts": [
-      "dist/background.js"
-    ]
-  },
-  "options_ui": {
-    "page": "setting/options.html",
-    "browser_style": true,
-    "chrome_style": true
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "cneyhn@gmail.com"
-    }
-  }
+  "content_security_policy": {}
 }
